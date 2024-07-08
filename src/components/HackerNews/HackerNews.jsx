@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { requestArticles } from '../../reducers/hackerNewsReducer.js'
+import { useEffect } from 'react';
 import Card from '../shared/Card/Card.jsx';
 import Loading from '../shared/Loading/Loading.jsx';
-import { requestArticles } from '../../reducers/hackerNewsReducer.js';
+
 
 export default function HackerNews() {
   const articles = useSelector((state) => state.hackerNews.articles);
   const loading = useSelector((state) => state.hackerNews.loading);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(requestArticles);
